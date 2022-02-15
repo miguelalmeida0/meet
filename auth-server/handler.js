@@ -67,6 +67,9 @@ module.exports.getAccessToken = async (event) => {
     .then((token) => {
       return {
         statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        },
         body: JSON.stringify(token),
       };
     })
@@ -79,7 +82,7 @@ module.exports.getAccessToken = async (event) => {
     });
 };
 
-module.exports.getCalendarEvents = event => {
+module.exports.getCalendarEvents = async (event) => {
 
 
 
@@ -88,7 +91,7 @@ module.exports.getCalendarEvents = event => {
     client_secret,
     redirect_uris[0]
   )
-  const code = decodeURIComponent(`${event.pathParameters.access_token}`)
+  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`)
   oAuth2Client.setCredentials({ access_token })
 
   return new Promise((resolve, reject) => {
