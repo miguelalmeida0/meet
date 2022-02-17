@@ -25,7 +25,7 @@
     <h1>OAuth2 Test</h1>
     <h4><b>Step 1:</b> Get the Auth URL</h4>
     <p>Click the button below to get your auth url.</p>
-    <button id="getCode">Get OAuth URL</button>
+    <button id="getURL">Get OAuth URL</button>
     <p id="result"></p>
     <a id="authURL" href target="_blank">Click to authorise</a>
 
@@ -50,9 +50,9 @@
     const getURLElement = document.getElementById("getURL");
     const resultElement = document.getElementById("result");
     const resultLink = document.getElementById("authURL");
-    // Replace this with my own LAMBDA endpoint
-    const getAuthURL =
-      "";
+    // my own LAMBDA endpoint
+    const getAuthURL = "https://van3svu5y7.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url";
+      
 
     getURLElement.onclick = function () {
       fetch(getAuthURL)
@@ -72,8 +72,8 @@
     const codeValue = document.getElementById("code");
     const getAccessToken = document.getElementById("getToken");
     const accessTokenElement = document.getElementById("accessToken");
-    const getToken = //my LAMBDA endpoint
-      "";
+    const getToken = "https://van3svu5y7.execute-api.eu-central-1.amazonaws.com/dev/api/token"
+    
 
     getAccessToken.onclick = function () {
       let code = codeValue.value;
@@ -94,10 +94,10 @@
 
     const getEvents = document.getElementById("getEvents");
     const events = document.getElementById("events");
-    const getCalendarEvents =  // my LAMDBA end point 
+    const getCalendarEvents =  "https://van3svu5y7.execute-api.eu-central-1.amazonaws.com/dev/api/get-events"
 
       getEvents.onclick = function () {
-        const { acces_token } = JSON.parse(accessTokenElement.innerText);
+        const { access_token } = JSON.parse(accessTokenElement.innerText);
         const eventRequest = getCalendarEvents + "/" + access_token;
         fetch(eventRequest)
           .then(function (response) {
