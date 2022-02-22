@@ -8,6 +8,10 @@
   box-sizing: border-box;
 }
 
+html {
+  background-image: url("https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -81,8 +85,9 @@ input[type="number"] {
   margin-bottom: 10px;
   text-align: left;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
   position: relative;
+  background-color: #e9e9e3;
 }
 
 .details-btn {
@@ -126,6 +131,25 @@ input[type="number"] {
   grid-gap: 20px;
   padding: 20px;
   font-family: sans-serif;
+}
+
+.show-details {
+  border-radius: 10px;
+  color: white;
+  background-color: #86705b;
+  border-color: lightgray;
+  border-style: solid;
+  margin: 10px;
+  padding: 7px;
+}
+
+.hide-details {
+  border-radius: 10px;
+  color: black;
+  border-color: lightgray;
+  border-style: solid;
+  margin: 10px;
+  padding: 7px;
 }
 
 .Alert {
