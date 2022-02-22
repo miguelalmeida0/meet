@@ -7,6 +7,27 @@ import { shallow, mount } from "enzyme";
 import { mockData } from "../mock-data";
 import { extractLocations, getEvents } from "../api";
 
+// Unit testing
+describe("<App /> component", () => {
+  let AppWrapper;
+
+  beforeAll(() => {
+    AppWrapper = shallow(<App />);
+  });
+
+  test("render list of events", () => {
+    expect(AppWrapper.find(EventList)).toHaveLength(1);
+  });
+
+  test("render CitySearch", () => {
+    expect(AppWrapper.find(CitySearch)).toHaveLength(1);
+  });
+
+  test("testing to see if NumberOfEvents renders properly!", () => {
+    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(0);
+  });
+});
+
 // Integration testing
 describe("<App /> integration", () => {
   test('App passes "events" state as a prop to EventList', () => {
@@ -52,25 +73,12 @@ describe("<App /> integration", () => {
     expect(AppWrapper.state("events")).toEqual(allEvents);
     AppWrapper.unmount();
   });
-});
 
-// Unit testing
-describe("<App /> component", () => {
-  let AppWrapper;
-  beforeAll(() => {
-    AppWrapper = shallow(<App />);
-  });
-
-  test("render list of events", () => {
-    expect(AppWrapper.find(EventList)).toHaveLength(1);
-  });
-
-  test("render CitySearch", () => {
-    const AppWrapper = shallow(<App />);
-    expect(AppWrapper.find(CitySearch)).toHaveLength(1);
-  });
-
-  test("testing to see if NumberOfEvents renders properly!", () => {
-    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
+  test("Passing the number of events (32 events)", () => {
+    const AppWrapper = mount(<App />);
+    const AppNumberOfEventsState = AppWrapper.state("numberOfEvents");
+    expect(AppNumberOfEventsState).not.toEqual(undefined);
+    expect(AppWrapper.find(EventList).props().numberOfEvents).toEqual(32);
+    AppWrapper.unmount();
   });
 });
