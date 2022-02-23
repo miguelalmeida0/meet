@@ -147,6 +147,7 @@ input[type="number"] {
   border-radius: 10px;
   color: black;
   border-color: lightgray;
+  background-color: #86705b;
   border-style: solid;
   margin: 10px;
   padding: 7px;
