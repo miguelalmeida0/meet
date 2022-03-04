@@ -48,7 +48,7 @@ describe("<EventList /> component", () => {
     EventWrapper.setState({
       collapsed: true,
     });
-    EventWrapper.find(".details.button").simulate("click");
+    EventWrapper.find(".details-button").simulate("click");
     expect(EventWrapper.state("collapsed")).toBe(false);
   });
 
@@ -56,7 +56,7 @@ describe("<EventList /> component", () => {
     EventWrapper.setState({
       collapsed: false,
     });
-    EventWrapper.find(".details.button").simulate("click");
+    EventWrapper.find(".details-button").simulate("click");
     expect(EventWrapper.state("collapsed")).toBe(true);
   });
 });

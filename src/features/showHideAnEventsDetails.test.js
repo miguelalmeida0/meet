@@ -34,8 +34,7 @@ defineFeature(feature, (test) => {
 
     when("the user clicks on an individual event", () => {
       AppWrapper.update();
-      expect(AppWrapper.find(".extra-details")).toHaveLength(2);
-      AppWrapper.find(".details.button").at(0).simulate("click");
+      AppWrapper.find(".details-button").at(0).simulate("click");
     });
 
     then("the event details will be displayed", () => {
@@ -51,12 +50,12 @@ defineFeature(feature, (test) => {
     given("The user has clicked on an event to display details", async () => {
       AppWrapper = await mount(<App />);
       AppWrapper.update();
-      AppWrapper.find(".details.button").at(0).simulate("click");
+      AppWrapper.find(".details-button").at(0).simulate("click");
       expect(AppWrapper.find(".extra-details")).toHaveLength(1);
     });
 
     when("the user clicks on “close” button", () => {
-      AppWrapper.find(".details.button").at(0).simulate("click");
+      AppWrapper.find(".details-button").at(0).simulate("click");
       expect(AppWrapper.find(".extra-details")).toHaveLength(0);
     });
 
