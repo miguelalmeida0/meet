@@ -5,6 +5,7 @@ class EventList extends Component {
   render() {
     const { events } = this.props;
     return (
+      <div className="list">
       <ul className="EventList">
         {events.map((event) => (
           <li key={event.id}>
@@ -12,6 +13,7 @@ class EventList extends Component {
           </li>
         ))}
       </ul>
+      </div>
     );
   }
 }

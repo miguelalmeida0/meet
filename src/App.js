@@ -38,7 +38,7 @@ class App extends Component {
     );
   };
 
-  updateEvents = (location, eventCount) => {
+  updateEvents = (location) => {
     getEvents().then((events) => {
       const locationEvents =
         location === "all"
