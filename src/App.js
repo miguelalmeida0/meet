@@ -5,6 +5,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { extractLocations, getEvents } from "./api";
+import { OfflineAlert } from "./Alert";
 
 class App extends Component {
   state = {
@@ -17,12 +18,20 @@ class App extends Component {
     this.mounted = true;
     getEvents().then((events) => {
       if (this.mounted) {
-        this.setState({
-          events: events.slice(0, this.state.numberOfEvents),
-          locations: extractLocations(events),
-        });
+        this.setState({ events, locations: extractLocations(events) });
       }
     });
+
+    if (!navigator.onLine) {
+      this.setState({
+        OfflineText:
+          "Sorry to tell you that you are offline, the events won't be updated!",
+      });
+    } else {
+      this.setState({
+        OfflineText: "",
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -54,9 +63,10 @@ class App extends Component {
   };
 
   render() {
-    const { events, locations, numberOfEvents } = this.state;
+    const { events, locations, numberOfEvents, OfflineText } = this.state;
     return (
       <div className="App">
+        <OfflineAlert text={OfflineText} />
         <CitySearch
           locations={locations}
           numberOfEvents={numberOfEvents}
