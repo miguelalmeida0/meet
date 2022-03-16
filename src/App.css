@@ -12,6 +12,10 @@ html {
   background-image: url("https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80");
 }
 
+.svg.recharts.wrapper {
+  background-color: #fff;
+}
+
 ul {
   padding: 0;
   list-style: none;
@@ -27,6 +31,18 @@ p {
 }
 .showSuggestions {
   display: block;
+}
+
+.google-btn {
+  box-shadow: 0px;
+}
+
+.recharts-surface {
+  background-color: white;
+}
+
+.tspan {
+  background-color: white;
 }
 
 input[type="text"],
